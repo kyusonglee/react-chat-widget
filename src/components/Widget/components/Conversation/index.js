@@ -22,6 +22,7 @@ const Conversation = props =>
     <QuickButtons onQuickButtonClicked={props.onQuickButtonClicked} />
     <Sender
       sendMessage={props.sendMessage}
+      handleOnChangeMessage={props.handleOnChangeMessage}
       placeholder={props.senderPlaceHolder}
       disabledInput={props.disabledInput}
       autofocus={props.autofocus}
@@ -38,6 +39,7 @@ Conversation.propTypes = {
   toggleChat: PropTypes.func,
   showCloseButton: PropTypes.bool,
   disabledInput: PropTypes.bool,
+  handleOnChangeMessage: PropTypes.func,
   autofocus: PropTypes.bool
 };
 

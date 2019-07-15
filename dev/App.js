@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader } from '../index';
+import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader,handleOnChangeMessage } from '../index';
 
 export default class App extends Component {
   componentDidMount() {
     addResponseMessage('Welcome to this awesome chat!');
   }
 
-  handleNewUserMessage = (newMessage) => {    
+  handleNewUserMessage = (newMessage) => {
     toggleMsgLoader();
     setTimeout(() => {
-      toggleMsgLoader();      
+      toggleMsgLoader();
       if (newMessage === 'fruits') {
         setQuickButtons([ { label: 'Apple', value: 'apple' }, { label: 'Orange', value: 'orange' }, { label: 'Pear', value: 'pear' }, { label: 'Banana', value: 'banana' } ]);
       } else {
@@ -23,6 +23,12 @@ export default class App extends Component {
     setQuickButtons([]);
   }
 
+  handleOnChangeMessage = (event) => {
+    event.preventDefault();
+    console.log(event.target.value);
+  }
+
+
   render() {
     return (
       <Widget
@@ -31,6 +37,7 @@ export default class App extends Component {
         senderPlaceHolder="Escribe aquí ..."
         handleNewUserMessage={this.handleNewUserMessage}
         handleQuickButtonClicked={this.handleQuickButtonClicked}
+        handleOnChangeMessage={this.handleOnChangeMessage}
         badge={1}
       />
     );

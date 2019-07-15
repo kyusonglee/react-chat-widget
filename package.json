@@ -1,5 +1,5 @@
 {
-  "name": "react-chat-widget",
+  "name": "@convmind/react-chat-widget",
   "version": "2.1.4-1",
   "description": "Chat web widget for React apps",
   "main": "lib/index.js",
@@ -10,7 +10,9 @@
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "webpack --config ./webpack.config.prod.js",
     "test": "jest --coverage",
-    "prepublishOnly": "npm run test && npm run build"
+    "transpile": "babel src -d dist --copy-files",
+    "prepublishOnly": "npm run transpile",
+    "prepublish": "npm run test && npm run build"
   },
   "keywords": [
     "react",

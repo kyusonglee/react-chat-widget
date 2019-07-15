@@ -51,6 +51,8 @@ class Widget extends Component {
         badge={this.props.badge}
         autofocus={this.props.autofocus}
         customLauncher={this.props.customLauncher}
+        handleOnChangeMessage={this.props.handleOnChangeMessage}
+
       />
     );
   }
@@ -67,6 +69,7 @@ Widget.propTypes = {
   showCloseButton: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
+  handleOnChangeMessage: PropTypes.func,
   autofocus: PropTypes.bool,
   customLauncher: PropTypes.func
 };
