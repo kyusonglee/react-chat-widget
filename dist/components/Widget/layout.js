@@ -51,11 +51,13 @@ var WidgetLayout = function (_React$Component) {
           slide_out = void 0;
       for (var x = 0; x < document.styleSheets.length; ++x) {
         for (var y = 0; y < document.styleSheets[x].cssRules.length; ++y) {
-          if (document.styleSheets[x].cssRules[y].name === "slide-in" && document.styleSheets[x].cssRules[y].type === CSSRule.KEYFRAMES_RULE) {
-            slide_in = document.styleSheets[x].cssRules[y];
-          }
-          if (document.styleSheets[x].cssRules[y].name === "slide-out" && document.styleSheets[x].cssRules[y].type === CSSRule.KEYFRAMES_RULE) {
-            slide_out = document.styleSheets[x].cssRules[y];
+          if (document.styleSheets[x].cssRules[y].name !== undefined) {
+            if (document.styleSheets[x].cssRules[y].cssRules[0].cssText === "0% { opacity: 0; transform: translateX(300px); }" && document.styleSheets[x].cssRules[y].type === CSSRule.KEYFRAMES_RULE) {
+              slide_in = document.styleSheets[x].cssRules[y];
+            }
+            if (document.styleSheets[x].cssRules[y].cssRules[0].cssText === "0% { opacity: 1; transform: translateX(0px); }" && document.styleSheets[x].cssRules[y].type === CSSRule.KEYFRAMES_RULE) {
+              slide_out = document.styleSheets[x].cssRules[y];
+            }
           }
         }
       }
