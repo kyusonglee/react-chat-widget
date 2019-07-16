@@ -21,7 +21,7 @@ const ConnectedWidget = props =>
       autofocus={props.autofocus}
       customLauncher={props.launcher}
       handleOnChangeMessage={props.handleOnChangeMessage}
-
+      onLeft={props.onLeft}
     />
   </Provider>;
 
@@ -39,6 +39,7 @@ ConnectedWidget.propTypes = {
   autofocus: PropTypes.bool,
   launcher: PropTypes.func,
   handleOnChangeMessage: PropTypes.func,
+  onLeft: PropTypes.bool
 };
 
 ConnectedWidget.defaultProps = {
@@ -48,7 +49,8 @@ ConnectedWidget.defaultProps = {
   showCloseButton: true,
   fullScreenMode: false,
   badge: 0,
-  autofocus: true
+  autofocus: true,
+  onLeft: true,
 };
 
 export default ConnectedWidget;

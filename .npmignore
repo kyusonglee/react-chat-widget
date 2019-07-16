@@ -10,3 +10,5 @@ circle.yml
 .eslintignore
 webpack.config.js
 package-lock.json
+
+.idea

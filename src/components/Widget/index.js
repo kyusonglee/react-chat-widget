@@ -7,6 +7,7 @@ import { toggleChat, addUserMessage } from '@actions';
 import WidgetLayout from './layout';
 
 class Widget extends Component {
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.fullScreenMode) {
       this.props.dispatch(toggleChat());
@@ -15,7 +16,7 @@ class Widget extends Component {
 
   toggleConversation = () => {
     this.props.dispatch(toggleChat());
-  }
+  };
 
   handleMessageSubmit = (event) => {
     event.preventDefault();
@@ -25,7 +26,7 @@ class Widget extends Component {
       this.props.handleNewUserMessage(userInput);
     }
     event.target.message.value = '';
-  }
+  };
 
   handleQuickButtonClicked = (event, value) => {
     event.preventDefault();
@@ -33,7 +34,7 @@ class Widget extends Component {
     if(this.props.handleQuickButtonClicked) {
       this.props.handleQuickButtonClicked(value);
     }
-  }
+  };
 
   render() {
     return (
@@ -52,7 +53,7 @@ class Widget extends Component {
         autofocus={this.props.autofocus}
         customLauncher={this.props.customLauncher}
         handleOnChangeMessage={this.props.handleOnChangeMessage}
-
+        onLeft={this.props.onLeft}
       />
     );
   }
@@ -71,7 +72,8 @@ Widget.propTypes = {
   badge: PropTypes.number,
   handleOnChangeMessage: PropTypes.func,
   autofocus: PropTypes.bool,
-  customLauncher: PropTypes.func
+  customLauncher: PropTypes.func,
+  onLeft: PropTypes.bool
 };
 
 export default connect()(Widget);

@@ -6,39 +6,142 @@ import Conversation from './components/Conversation';
 import Launcher from './components/Launcher';
 import './style.scss';
 
-const WidgetLayout = props => (
-  <div
-    className={
-      `rcw-widget-container ${props.fullScreenMode ? 'rcw-full-screen' : ''} ${props.showChat ? 'rcw-opened' : ''}`
+
+class WidgetLayout extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    console.log(document.styleSheets);
+    let slide_in, slide_out;
+    for (let x = 0; x < document.styleSheets.length; ++x) {
+      for (let y = 0; y < document.styleSheets[x].cssRules.length; ++y) {
+        if (document.styleSheets[x].cssRules[y].name === "slide-in" && document.styleSheets[x].cssRules[y].type === CSSRule.KEYFRAMES_RULE){
+          slide_in = document.styleSheets[x].cssRules[y];
+        }
+        if (document.styleSheets[x].cssRules[y].name === "slide-out" && document.styleSheets[x].cssRules[y].type === CSSRule.KEYFRAMES_RULE){
+          slide_out = document.styleSheets[x].cssRules[y];
+        }
+      }
     }
-  >
-    {props.showChat &&
-      <Conversation
-        title={props.title}
-        subtitle={props.subtitle}
-        sendMessage={props.onSendMessage}
-        senderPlaceHolder={props.senderPlaceHolder}
-        onQuickButtonClicked={props.onQuickButtonClicked}
-        profileAvatar={props.profileAvatar}
-        toggleChat={props.onToggleConversation}
-        showChat={props.showChat}
-        showCloseButton={props.showCloseButton}
-        disabledInput={props.disabledInput}
-        autofocus={props.autofocus}
-        titleAvatar={props.titleAvatar}
-        handleOnChangeMessage={props.handleOnChangeMessage}
-      />
+
+    if (this.props.onLeft){
+      slide_in.appendRule("0% { transform: translateX(0px); opacity: 0; }");
+      slide_in.appendRule("100% { transform: translateX(20px); opacity: 1; }");
+      slide_out.appendRule("0% { transform: translateX(20px); opacity: 0; }");
+      slide_out.appendRule("100% { transform: translateX(0px); opacity: 1; }");
+      document.querySelector(".rcw-widget-container").style.left = 0;
+      document.querySelector(".rcw-launcher").style.left = "10px";
+    } else {
+      document.querySelector(".rcw-widget-container").style.right = 0;
+      document.querySelector(".rcw-launcher").style.right = "10px";
     }
-    {props.customLauncher ?
-      props.customLauncher(props.onToggleConversation) :
-      !props.fullScreenMode &&
-      <Launcher
-        toggle={props.onToggleConversation}
-        badge={props.badge}
-      />
+  }
+  render() {
+    if (this.props.onLeft){
+      return (
+        <div
+          className={
+            `rcw-widget-container ${this.props.fullScreenMode ? 'rcw-full-screen' : ''} ${this.props.showChat ? 'rcw-opened' : ''}`
+          }
+        >
+          {this.props.showChat &&
+            <Conversation
+              title={this.props.title}
+              subtitle={this.props.subtitle}
+              sendMessage={this.props.onSendMessage}
+              senderPlaceHolder={this.props.senderPlaceHolder}
+              onQuickButtonClicked={this.props.onQuickButtonClicked}
+              profileAvatar={this.props.profileAvatar}
+              toggleChat={this.props.onToggleConversation}
+              showChat={this.props.showChat}
+              showCloseButton={this.props.showCloseButton}
+              disabledInput={this.props.disabledInput}
+              autofocus={this.props.autofocus}
+              titleAvatar={this.props.titleAvatar}
+              handleOnChangeMessage={this.props.handleOnChangeMessage}
+            />
+          }
+          {this.props.customLauncher ?
+            this.props.customLauncher(this.props.onToggleConversation) :
+            !this.props.fullScreenMode &&
+            <Launcher
+              toggle={this.props.onToggleConversation}
+              badge={this.props.badge}
+            />
+          }
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className={
+            `rcw-widget-container ${this.props.fullScreenMode ? 'rcw-full-screen' : ''} ${this.props.showChat ? 'rcw-opened' : ''}`
+          }
+        >
+          {this.props.customLauncher ?
+            this.props.customLauncher(this.props.onToggleConversation) :
+            !this.props.fullScreenMode &&
+            <Launcher
+              toggle={this.props.onToggleConversation}
+              badge={this.props.badge}
+            />
+          }
+          {this.props.showChat &&
+            <Conversation
+              title={this.props.title}
+              subtitle={this.props.subtitle}
+              sendMessage={this.props.onSendMessage}
+              senderPlaceHolder={this.props.senderPlaceHolder}
+              onQuickButtonClicked={this.props.onQuickButtonClicked}
+              profileAvatar={this.props.profileAvatar}
+              toggleChat={this.props.onToggleConversation}
+              showChat={this.props.showChat}
+              showCloseButton={this.props.showCloseButton}
+              disabledInput={this.props.disabledInput}
+              autofocus={this.props.autofocus}
+              titleAvatar={this.props.titleAvatar}
+              handleOnChangeMessage={this.props.handleOnChangeMessage}
+            />
+          }
+        </div>
+      );
     }
-  </div>
-);
+  }
+}
+// const WidgetLayout = props => (
+//   <div
+//     className={
+//       `rcw-widget-container ${props.fullScreenMode ? 'rcw-full-screen' : ''} ${props.showChat ? 'rcw-opened' : ''}`
+//     }
+//   >
+//     {props.customLauncher ?
+//       props.customLauncher(props.onToggleConversation) :
+//       !props.fullScreenMode &&
+//       <Launcher
+//         toggle={props.onToggleConversation}
+//         badge={props.badge}
+//       />
+//     }
+//     {props.showChat &&
+//       <Conversation
+//         title={props.title}
+//         subtitle={props.subtitle}
+//         sendMessage={props.onSendMessage}
+//         senderPlaceHolder={props.senderPlaceHolder}
+//         onQuickButtonClicked={props.onQuickButtonClicked}
+//         profileAvatar={props.profileAvatar}
+//         toggleChat={props.onToggleConversation}
+//         showChat={props.showChat}
+//         showCloseButton={props.showCloseButton}
+//         disabledInput={props.disabledInput}
+//         autofocus={props.autofocus}
+//         titleAvatar={props.titleAvatar}
+//         handleOnChangeMessage={props.handleOnChangeMessage}
+//       />
+//     }
+//   </div>
+// );
 
 WidgetLayout.propTypes = {
   title: PropTypes.string,
@@ -57,7 +160,7 @@ WidgetLayout.propTypes = {
   autofocus: PropTypes.bool,
   customLauncher: PropTypes.func,
   handleOnChangeMessage: PropTypes.func,
-
+  onLeft: PropTypes.bool
 };
 
 export default connect(store => ({

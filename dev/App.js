@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader,handleOnChangeMessage } from '../index';
 
 export default class App extends Component {
+  // constructor(props){
+  //   super(props);
+  // }
   componentDidMount() {
+    console.log(this.props);
     addResponseMessage('Welcome to this awesome chat!');
   }
 
@@ -39,6 +43,7 @@ export default class App extends Component {
         handleQuickButtonClicked={this.handleQuickButtonClicked}
         handleOnChangeMessage={this.handleOnChangeMessage}
         badge={1}
+        // onLeft={false}
       />
     );
   }
