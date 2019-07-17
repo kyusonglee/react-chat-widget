@@ -42,9 +42,15 @@ class WidgetLayout extends React.Component {
       slide_out.appendRule("100% { transform: translateX(0px); opacity: 1; }");
       document.querySelector(".rcw-widget-container").style.left = 0;
       document.querySelector(".rcw-launcher").style.left = "10px";
+      if (document.querySelector(".rcw-reply")){
+        document.querySelector(".rcw-reply").style.borderRadius = "40px 40px 0 40px";
+      }
     } else {
       document.querySelector(".rcw-widget-container").style.right = 0;
       document.querySelector(".rcw-launcher").style.right = "10px";
+      if (document.querySelector(".rcw-reply")){
+        document.querySelector(".rcw-reply").style.borderRadius = "40px 40px 40px 0";
+      }
     }
   }
   render() {
