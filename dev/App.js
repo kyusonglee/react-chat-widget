@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader,handleOnChangeMessage } from '../index';
+import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader,handleOnChangeMessage,} from '../index';
 
 export default class App extends Component {
   // constructor(props){

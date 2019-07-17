@@ -5,9 +5,9 @@
 .rcw-conversation-container {
   @include animation(0, .8s, slide-in);
   border-radius: 10px;
-  margin: 0 20px;
+  //margin: 0 20px;
   transition-duration: .8s;
-  width: 100%;
+  width: 80%;
 }
 
 .rcw-slide-out {

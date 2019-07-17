@@ -32,8 +32,12 @@ class WidgetLayout extends React.Component {
     }
 
     if (this.props.onLeft){
+      slide_in.deleteRule(0);
+      slide_in.deleteRule(1);
       slide_in.appendRule("0% { transform: translateX(0px); opacity: 0; }");
       slide_in.appendRule("100% { transform: translateX(20px); opacity: 1; }");
+      slide_out.deleteRule(0);
+      slide_out.deleteRule(1);
       slide_out.appendRule("0% { transform: translateX(20px); opacity: 0; }");
       slide_out.appendRule("100% { transform: translateX(0px); opacity: 1; }");
       document.querySelector(".rcw-widget-container").style.left = 0;
