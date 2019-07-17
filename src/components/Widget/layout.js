@@ -17,7 +17,7 @@ class WidgetLayout extends React.Component {
     for (let x = 0; x < document.styleSheets.length; ++x) {
       for (let y = 0; y < document.styleSheets[x].cssRules.length; ++y) {
         if (document.styleSheets[x].cssRules[y].name !== undefined){
-          if (document.styleSheets[x].cssRules[y].cssRules[0].cssText === "0% { opacity: 0; transform: translateX(300px); }"
+          if (document.styleSheets[x].cssRules[y].cssRules[0].cssText === "0% { opacity: 0; transform: translateX(50px); }"
             && document.styleSheets[x].cssRules[y].type === CSSRule.KEYFRAMES_RULE
           ) {
             slide_in = document.styleSheets[x].cssRules[y];
