@@ -3,7 +3,7 @@
 @import 'animation.scss';
 
 .rcw-launcher {
-  @include animation(0, 0.5s, slide-in);
+  //@include animation(0, 0.5s, slide-in);
   align-self: flex-end;
   background-color: $turqois-1;
   border: 0;
@@ -11,6 +11,10 @@
   height: 60px;
   margin: 0 20px;
   width: 60px;
+
+  &:hover {
+    @include animation(0, 1s, shakeX);
+  }
 
   &:focus {
     outline: none;

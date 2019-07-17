@@ -7,7 +7,7 @@ Error: File to import not found or unreadable: common.scss.
 3: @import 'animation.scss';
 4: 
 5: .rcw-launcher {
-6:   @include animation(0, 0.5s, slide-in);
+6:   //@include animation(0, 0.5s, slide-in);
 
 Backtrace:
 style.scss:1
@@ -50,4 +50,4 @@ style.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: common.scss.\A         on line 1 of style.scss\A \A 1: @import 'common.scss';\A 2: @import 'variables.scss';\A 3: @import 'animation.scss';\A 4: \A 5: .rcw-launcher {\A 6:   @include animation(0, 0.5s, slide-in);"; }
+  content: "Error: File to import not found or unreadable: common.scss.\A         on line 1 of style.scss\A \A 1: @import 'common.scss';\A 2: @import 'variables.scss';\A 3: @import 'animation.scss';\A 4: \A 5: .rcw-launcher {\A 6:   //@include animation(0, 0.5s, slide-in);"; }

@@ -70,5 +70,32 @@
   to {
     opacity: 0;
     transform: translateX(50px); } }
+@-webkit-keyframes shakeX {
+  10%, 90% {
+    transform: translateX(-1px); }
+  20%, 80% {
+    transform: translateX(1px); }
+  30%, 50%, 70% {
+    transform: translateX(-2px); }
+  40%, 60% {
+    transform: translateX(2px); } }
+@-moz-keyframes shakeX {
+  10%, 90% {
+    transform: translateX(-1px); }
+  20%, 80% {
+    transform: translateX(1px); }
+  30%, 50%, 70% {
+    transform: translateX(-2px); }
+  40%, 60% {
+    transform: translateX(2px); } }
+@keyframes shakeX {
+  10%, 90% {
+    transform: translateX(-1px); }
+  20%, 80% {
+    transform: translateX(1px); }
+  30%, 50%, 70% {
+    transform: translateX(-2px); }
+  40%, 60% {
+    transform: translateX(2px); } }
 
 /*# sourceMappingURL=animation.css.map */

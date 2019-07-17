@@ -43,8 +43,9 @@ export default class App extends Component {
         handleQuickButtonClicked={this.handleQuickButtonClicked}
         handleOnChangeMessage={this.handleOnChangeMessage}
         badge={1}
-        onLeft={false}
+        // onLeft={false}
       />
+
     );
   }
 }

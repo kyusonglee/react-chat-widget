@@ -1,0 +1,74 @@
+@-webkit-keyframes rotation-lr {
+  from {
+    transform: rotate(-90deg); }
+  to {
+    transform: rotate(0); } }
+@-moz-keyframes rotation-lr {
+  from {
+    transform: rotate(-90deg); }
+  to {
+    transform: rotate(0); } }
+@keyframes rotation-lr {
+  from {
+    transform: rotate(-90deg); }
+  to {
+    transform: rotate(0); } }
+@-webkit-keyframes rotation-rl {
+  from {
+    transform: rotate(90deg); }
+  to {
+    transform: rotate(0); } }
+@-moz-keyframes rotation-rl {
+  from {
+    transform: rotate(90deg); }
+  to {
+    transform: rotate(0); } }
+@keyframes rotation-rl {
+  from {
+    transform: rotate(90deg); }
+  to {
+    transform: rotate(0); } }
+@-webkit-keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(50px); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+@-moz-keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(50px); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(50px); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+@-webkit-keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0); }
+  to {
+    opacity: 0;
+    transform: translateX(50px); } }
+@-moz-keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0); }
+  to {
+    opacity: 0;
+    transform: translateX(50px); } }
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0); }
+  to {
+    opacity: 0;
+    transform: translateX(50px); } }
+
+/*# sourceMappingURL=animation.css.map */
