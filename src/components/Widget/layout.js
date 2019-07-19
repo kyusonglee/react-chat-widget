@@ -12,7 +12,7 @@ class WidgetLayout extends React.Component {
     super(props);
   }
   componentDidMount() {
-    console.log(document.styleSheets);
+    // console.log(document.styleSheets);
     let slide_in = [], slide_out = [];
     for (let x = 0; x < document.styleSheets.length; ++x) {
       for (let y = 0; y < document.styleSheets[x].cssRules.length; ++y) {
