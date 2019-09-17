@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
-import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader,handleOnChangeMessage,} from '../index';
+import {
+  Widget,
+  addResponseMessage,
+  setQuickButtons,
+  toggleMsgLoader,
+  handleOnChangeMessage,
+  toggleWidget
+} from "../index";
+import "../lib/styles.css";
+import "./widget.css";
 
 export default class App extends Component {
   // constructor(props){
   //   super(props);
   // }
   componentDidMount() {
+    // toggleWidget();
     console.log(this.props);
     addResponseMessage('Welcome to this awesome chat!');
   }
@@ -35,17 +45,20 @@ export default class App extends Component {
 
   render() {
     return (
-      <Widget
-        title="Bienvenido"
-        subtitle="Asistente virtual"
-        senderPlaceHolder="Escribe aquí ..."
-        handleNewUserMessage={this.handleNewUserMessage}
-        handleQuickButtonClicked={this.handleQuickButtonClicked}
-        handleOnChangeMessage={this.handleOnChangeMessage}
-        badge={1}
-        // onLeft={false}
-      />
-
+      <div style={{minHeight: '100vh'}}>
+        <Widget
+          title=""
+          subtitle=""
+          senderPlaceHolder="..."
+          handleNewUserMessage={this.handleNewUserMessage}
+          handleQuickButtonClicked={this.handleQuickButtonClicked}
+          handleOnChangeMessage={this.handleOnChangeMessage}
+          badge={1}
+          fullScreenMode={true}
+          showCloseButton={false}
+          // onLeft={true}
+        />
+      </div>
     );
   }
 }

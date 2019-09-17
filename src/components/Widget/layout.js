@@ -6,12 +6,15 @@ import Conversation from './components/Conversation';
 import Launcher from './components/Launcher';
 import './style.scss';
 
+let fullScreenMode;
 
 class WidgetLayout extends React.Component {
   constructor(props) {
     super(props);
   }
   componentDidMount() {
+    console.log("Onlfet", this.props.onLeft);
+    fullScreenMode = this.props.fullScreenMode;
     // console.log(document.styleSheets);
     let slide_in = [], slide_out = [];
     for (let x = 0; x < document.styleSheets.length; ++x) {
@@ -30,33 +33,48 @@ class WidgetLayout extends React.Component {
         }
       }
     }
+    if (!this.props.fullScreenMode) {
+      if (this.props.onLeft){
+        slide_in.map((i) => {
+          i.deleteRule(0);
+          i.deleteRule(1);
+          i.appendRule("0% { transform: translateX(0px); opacity: 0; }");
+          i.appendRule("100% { transform: translateX(15px); opacity: 1; }");
+        });
 
-    if (this.props.onLeft){
+        slide_out.map((o) => {
+          o.deleteRule(0);
+          o.deleteRule(1);
+          o.appendRule("0% { transform: translateX(15px); opacity: 0; }");
+          o.appendRule("100% { transform: translateX(0px); opacity: 1; }");
+        });
+
+        document.querySelector(".rcw-widget-container").style.left = 0;
+        if (document.querySelector(".rcw-launcher"))
+          document.querySelector(".rcw-launcher").style.left = "10px";
+        if (document.querySelector(".rcw-reply"))
+          document.querySelector(".rcw-reply").style.borderRadius = "40px 40px 0 40px";
+      } else {
+        document.querySelector(".rcw-widget-container").style.right = 0;
+        if (document.querySelector(".rcw-launcher"))
+          document.querySelector(".rcw-launcher").style.right = "10px";
+        if (document.querySelector(".rcw-reply"))
+          document.querySelector(".rcw-reply").style.borderRadius = "40px 40px 40px 0";
+      }
+    } else {
       slide_in.map((i) => {
         i.deleteRule(0);
         i.deleteRule(1);
-        i.appendRule("0% { transform: translateX(0px); opacity: 0; }");
-        i.appendRule("100% { transform: translateX(15px); opacity: 1; }");
+        i.appendRule("0% { transform: translateY(10px); opacity: 0; }");
+        i.appendRule("100% { transform: translateY(0); opacity: 1; }");
       });
 
       slide_out.map((o) => {
         o.deleteRule(0);
         o.deleteRule(1);
-        o.appendRule("0% { transform: translateX(15px); opacity: 0; }");
-        o.appendRule("100% { transform: translateX(0px); opacity: 1; }");
+        o.appendRule("0% { transform: translateX(0); opacity: 1; }");
+        o.appendRule("100% { transform: translateX(10px); opacity: 0; }");
       });
-
-      document.querySelector(".rcw-widget-container").style.left = 0;
-      document.querySelector(".rcw-launcher").style.left = "10px";
-      if (document.querySelector(".rcw-reply")){
-        document.querySelector(".rcw-reply").style.borderRadius = "40px 40px 0 40px";
-      }
-    } else {
-      document.querySelector(".rcw-widget-container").style.right = 0;
-      document.querySelector(".rcw-launcher").style.right = "10px";
-      if (document.querySelector(".rcw-reply")){
-        document.querySelector(".rcw-reply").style.borderRadius = "40px 40px 40px 0";
-      }
     }
   }
   render() {
@@ -131,39 +149,6 @@ class WidgetLayout extends React.Component {
     }
   }
 }
-// const WidgetLayout = props => (
-//   <div
-//     className={
-//       `rcw-widget-container ${props.fullScreenMode ? 'rcw-full-screen' : ''} ${props.showChat ? 'rcw-opened' : ''}`
-//     }
-//   >
-//     {props.customLauncher ?
-//       props.customLauncher(props.onToggleConversation) :
-//       !props.fullScreenMode &&
-//       <Launcher
-//         toggle={props.onToggleConversation}
-//         badge={props.badge}
-//       />
-//     }
-//     {props.showChat &&
-//       <Conversation
-//         title={props.title}
-//         subtitle={props.subtitle}
-//         sendMessage={props.onSendMessage}
-//         senderPlaceHolder={props.senderPlaceHolder}
-//         onQuickButtonClicked={props.onQuickButtonClicked}
-//         profileAvatar={props.profileAvatar}
-//         toggleChat={props.onToggleConversation}
-//         showChat={props.showChat}
-//         showCloseButton={props.showCloseButton}
-//         disabledInput={props.disabledInput}
-//         autofocus={props.autofocus}
-//         titleAvatar={props.titleAvatar}
-//         handleOnChangeMessage={props.handleOnChangeMessage}
-//       />
-//     }
-//   </div>
-// );
 
 WidgetLayout.propTypes = {
   title: PropTypes.string,
@@ -186,6 +171,7 @@ WidgetLayout.propTypes = {
 };
 
 export default connect(store => ({
-  showChat: store.behavior.get('showChat'),
+  showChat: fullScreenMode? true : store.behavior.get('showChat'),
+  // showChat: store.behavior.get('showChat'),
   disabledInput: store.behavior.get('disabledInput')
 }))(WidgetLayout);

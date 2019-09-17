@@ -1,0 +1,74 @@
+.rcw-message > .rcw-response {
+    max-width: 80%;
+    font-size: 15px;
+}
+
+.rcw-widget-container {
+    /*height: 100%;*/
+    max-width: 90%;
+    width: 90%;
+}
+
+.rcw-full-screen .rcw-messages-container {
+    height: 300px;
+    overflow: scroll;
+}
+
+/*#content-desktop {display: block;}*/
+/*#content-mobile {display: none;}*/
+
+
+.rcw-message .rcw-response {
+    font-size: 16px
+}
+
+.rcw-conversation-container .rcw-header {
+    /*background-color: #FFBC00;*/
+    padding:0
+}
+
+/*.ant-typography-expand {*/
+/*    color: #ffbc00;*/
+/*}*/
+
+.rcw-message-text p{
+    font-family: Avenir Next;
+}
+
+
+
+/*Mobile*/
+@media screen and (max-width: 768px) {
+
+    #content-desktop {display: none;}
+    #content-mobile {display: block;}
+
+}
+
+@media only screen and (min-width: 768px) {
+    .rcw-widget-container {
+        position: relative;
+        top: 40px;
+        left: 5%;
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .rcw-widget-container {
+        height:100%;
+        width: 90%;
+    }
+    .rcw-conversation-container .rcw-close-button{
+        /*background-color:#FFBC00*/
+    }
+    .rcw-widget-container.rcw-opened{
+        min-width:100%
+    }
+    .rcw-conversation-container .rcw-title{
+        margin-top:15px;
+    }
+    .rcw-widget-container {
+        height: 0;
+    }
+}

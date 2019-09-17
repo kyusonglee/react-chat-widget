@@ -50,7 +50,7 @@ ConnectedWidget.defaultProps = {
   fullScreenMode: false,
   badge: 0,
   autofocus: true,
-  onLeft: true,
+  // onLeft: true,
 };
 
 export default ConnectedWidget;
