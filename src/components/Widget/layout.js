@@ -100,6 +100,7 @@ class WidgetLayout extends React.Component {
               autofocus={this.props.autofocus}
               titleAvatar={this.props.titleAvatar}
               handleOnChangeMessage={this.props.handleOnChangeMessage}
+              ifHeader={this.props.ifHeader}
             />
           }
           {this.props.customLauncher ?
@@ -142,6 +143,7 @@ class WidgetLayout extends React.Component {
               autofocus={this.props.autofocus}
               titleAvatar={this.props.titleAvatar}
               handleOnChangeMessage={this.props.handleOnChangeMessage}
+              ifHeader={this.props.ifHeader}
             />
           }
         </div>
@@ -167,7 +169,8 @@ WidgetLayout.propTypes = {
   autofocus: PropTypes.bool,
   customLauncher: PropTypes.func,
   handleOnChangeMessage: PropTypes.func,
-  onLeft: PropTypes.bool
+  onLeft: PropTypes.bool,
+  ifHeader: PropTypes.bool
 };
 
 export default connect(store => ({

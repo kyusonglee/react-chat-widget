@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   Widget,
+  addUserMessage,
   addResponseMessage,
   setQuickButtons,
   toggleMsgLoader,
@@ -33,6 +34,7 @@ export default class App extends Component {
   }
 
   handleQuickButtonClicked = (e) => {
+    addUserMessage(e);
     addResponseMessage('Selected ' + e);
     setQuickButtons([]);
   }
@@ -56,6 +58,7 @@ export default class App extends Component {
           badge={1}
           fullScreenMode={true}
           showCloseButton={false}
+          ifHeader={false}
           // onLeft={true}
         />
       </div>

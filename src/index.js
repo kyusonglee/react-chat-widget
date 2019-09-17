@@ -22,6 +22,7 @@ const ConnectedWidget = props =>
       customLauncher={props.launcher}
       handleOnChangeMessage={props.handleOnChangeMessage}
       onLeft={props.onLeft}
+      ifHeader={props.ifHeader}
     />
   </Provider>;
 
@@ -39,7 +40,8 @@ ConnectedWidget.propTypes = {
   autofocus: PropTypes.bool,
   launcher: PropTypes.func,
   handleOnChangeMessage: PropTypes.func,
-  onLeft: PropTypes.bool
+  onLeft: PropTypes.bool,
+  ifHeader: PropTypes.bool
 };
 
 ConnectedWidget.defaultProps = {
@@ -50,6 +52,7 @@ ConnectedWidget.defaultProps = {
   fullScreenMode: false,
   badge: 0,
   autofocus: true,
+  ifHeader: true
   // onLeft: true,
 };
 

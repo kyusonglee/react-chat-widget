@@ -54,6 +54,7 @@ class Widget extends Component {
         customLauncher={this.props.customLauncher}
         handleOnChangeMessage={this.props.handleOnChangeMessage}
         onLeft={this.props.onLeft}
+        ifHeader={this.props.ifHeader}
       />
     );
   }
@@ -73,7 +74,8 @@ Widget.propTypes = {
   handleOnChangeMessage: PropTypes.func,
   autofocus: PropTypes.bool,
   customLauncher: PropTypes.func,
-  onLeft: PropTypes.bool
+  onLeft: PropTypes.bool,
+  ifHeader: PropTypes.bool
 };
 
 export default connect()(Widget);

@@ -9,13 +9,13 @@ import './style.scss';
 
 const Conversation = props =>
   <div className="rcw-conversation-container">
-    <Header
+    {props.ifHeader? <Header
       title={props.title}
       subtitle={props.subtitle}
       toggleChat={props.toggleChat}
       showCloseButton={props.showCloseButton}
       titleAvatar={props.titleAvatar}
-    />
+    /> : null}
     <Messages
       profileAvatar={props.profileAvatar}
     />
@@ -40,7 +40,8 @@ Conversation.propTypes = {
   showCloseButton: PropTypes.bool,
   disabledInput: PropTypes.bool,
   handleOnChangeMessage: PropTypes.func,
-  autofocus: PropTypes.bool
+  autofocus: PropTypes.bool,
+  ifHeader: PropTypes.bool
 };
 
 export default Conversation;
